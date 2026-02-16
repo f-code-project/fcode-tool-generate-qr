@@ -44,3 +44,13 @@ export const generateQR = async (data: string): Promise<string> => {
   const result: { imageUrl: string } = await response.json();
   return result.imageUrl;
 };
+
+export const downloadQR = async (url: string, filename: string) => {
+  try {
+    const response = await fetch(url);
+    const bytesWritten = await Bun.write(`qrcode/${filename}`, response);
+    return bytesWritten;
+  } catch (error) {
+    console.error("Lỗi khi tải QR code:", error);
+  }
+};
