@@ -40,7 +40,7 @@ export const generateQR = async (data: string): Promise<string> => {
         gradientColor2: "#009D4F",
         gradientType: "linear",
         gradientOnEyes: false,
-        logo: "98d0d71b6cdb8125f7848c412b2ad74329851266.png",
+        logo: "https://i.ibb.co/WpMCTdZD/no-text.png", // logo f-code
         logoMode: "clean",
       },
       size: 2000,
