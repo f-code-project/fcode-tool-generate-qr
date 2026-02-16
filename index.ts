@@ -1,10 +1,12 @@
-import { encodeBase64 } from "./helper";
+import { encodeBase64, generateQR } from "./helper";
 const file = Bun.file("data.txt");
 const exportFile = Bun.file("export.txt");
 const writer = exportFile.writer();
 const data = await file.text();
 for (let line of data.split("\n")) {
   const [studentCode, fullName] = line.trim().split("|");
-  writer.write(`${fullName}|${encodeBase64(`${fullName}|${studentCode}`)}\n`);
+  const token = encodeBase64(`${fullName}|${studentCode}`);
+  //   const data = await generateQR(token);
+  writer.write(`${fullName}|${token}|${data}\n`);
 }
 writer.flush();
